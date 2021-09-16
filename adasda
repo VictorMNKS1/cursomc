@@ -1,0 +1,23 @@
+[33mcommit 75d5c8eb4670ad3ed4b2c872e9e6947a679c82f1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Victor Rafael <victorrafael.dev@gmail.com>
+Date:   Thu Sep 16 14:46:20 2021 -0300
+
+    Criando repository e service para categoria
+
+[33mcommit b33d9c1ef3079a5e6df0b29caa451ef3cbc80a80[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Victor Rafael <victorrafael.dev@gmail.com>
+Date:   Thu Sep 16 12:18:04 2021 -0300
+
+    Banco de dados h2 e criacao automatica da base de dados
+
+[33mcommit 383ed3bb60e093f1edc5404c02b43f4b67c0b504[m
+Author: Victor Rafael <victorrafael.dev@gmail.com>
+Date:   Thu Sep 16 10:57:11 2021 -0300
+
+    REST testado
+
+[33mcommit 2c9be02d9b9d2c7facb219faaba54b5e792d8949[m
+Author: Victor Rafael <victorrafael.dev@gmail.com>
+Date:   Thu Sep 16 10:39:02 2021 -0300
+
+    Projeto Criado
