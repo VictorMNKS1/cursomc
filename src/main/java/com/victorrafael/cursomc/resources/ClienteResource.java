@@ -1,10 +1,14 @@
 package com.victorrafael.cursomc.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.victorrafael.cursomc.domain.Categoria;
+import com.victorrafael.cursomc.dto.CategoriaDTO;
+import com.victorrafael.cursomc.dto.ClienteNewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.victorrafael.cursomc.domain.Cliente;
 import com.victorrafael.cursomc.dto.ClienteDTO;
 import com.victorrafael.cursomc.services.ClienteService;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController	
 @RequestMapping(value = "/clientes")
@@ -49,7 +54,7 @@ public class ClienteResource {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> list = service.findAll();
-		List<ClienteDTO> listDto = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
+		List<ClienteDTO> listDto = list.stream().map(ClienteDTO::new).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 	// value = "/page",
@@ -60,9 +65,18 @@ public class ClienteResource {
 			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		Page<Cliente> list = service.findPage(page, linesPerPage, orderBy, direction);
-		Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
+		Page<ClienteDTO> listDto = list.map(ClienteDTO::new);
 		return ResponseEntity.ok().body(listDto);
 	}
-	
 
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) {
+		Cliente obj = service.fromDTO(objDto);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+
+
+}
 }
