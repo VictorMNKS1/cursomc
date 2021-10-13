@@ -3,6 +3,7 @@ package com.victorrafael.cursomc.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.victorrafael.cursomc.domain.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -34,8 +35,9 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Categoria newobj= find(obj.getId());
+		updateData(newobj, obj);
+		return repo.save(newobj);
 	}
 
 	public void delete(Integer id) {
@@ -60,5 +62,10 @@ public class CategoriaService {
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
 	}
-	
+
+	private void updateData(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
+	}
 }
+
+
