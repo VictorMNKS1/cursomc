@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.victorrafael.cursomc.domain.Categoria;
-import com.victorrafael.cursomc.dto.CategoriaDTO;
+
 import com.victorrafael.cursomc.dto.ClienteNewDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
