@@ -1,14 +1,13 @@
 package com.victorrafael.cursomc.services.validation;
 
 
-
-import javax.validation.Constraint;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import javax.validation.Payload;
+import javax.validation.Constraint;
 
 @Constraint(validatedBy = ClienteInsertValidator.class)
 @Target({ ElementType.TYPE })

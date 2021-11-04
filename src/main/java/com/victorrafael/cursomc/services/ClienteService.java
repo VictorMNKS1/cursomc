@@ -21,8 +21,7 @@ import com.victorrafael.cursomc.dto.ClienteDTO;
 import com.victorrafael.cursomc.repositories.ClienteRepository;
 import com.victorrafael.cursomc.services.exceptions.DataIntegrityException;
 import com.victorrafael.cursomc.services.exceptions.ObjectNotFoundException;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ClienteService {
